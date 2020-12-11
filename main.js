@@ -2,7 +2,6 @@ const DEBUG = false;
         const RESIN_LIMIT = 160;
         const RECHARGE_INTERVAL = 8;    //minutes; also update html input max="" if changed
 
-        //Redo the css (or find a bootstrap template) [dark theme]        
         //Main
         document.querySelector("#resin").focus();
         function calculate(resin, start_time){

@@ -1,0 +1,65 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 50px;    /*Fixes footer on small screens*/
+}
+h1{
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.title_top{
+    font-weight: 700;
+    font-size: 25px;
+    margin-bottom: -1.5rem;
+    margin-top: 2rem;
+}
+
+.title_bottom{
+    font-size: 100px;
+    font-weight: light;
+    letter-spacing: -.15rem;
+    margin-bottom: -1rem;
+}
+
+.title_top{
+    visibility: hidden;
+}
+
+.row{
+    text-align: center;
+}
+
+button, button:focus, input{
+    border: solid 1px black;
+}
+
+.col{
+    max-width: 600px;
+    margin: auto;
+}
+
+.jumbotron{
+    padding: 2rem;
+}
+
+.page-footer{
+    background-color: rgb(233, 233, 233);
+}
+
+@media only screen and (max-width: 767px) {
+    .title_top{
+        font-size: 20px;
+    }
+    .title_bottom{
+        font-size: 80px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .title_top{
+        font-size: 15px;
+    }
+    .title_bottom{
+        font-size: 60px;
+    }
+}

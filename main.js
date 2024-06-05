@@ -1,6 +1,10 @@
 const DEBUG = false;
-const RESIN_LIMIT = 160;
-const RECHARGE_INTERVAL = 8;    //minutes; also update html input max="" if changed
+const RESIN_LIMIT = 200;
+const RECHARGE_INTERVAL = 8;    //minutes
+
+// Update HTML
+document.querySelector("#resin").setAttribute("max", RESIN_LIMIT);
+document.querySelector("#basic-addon1").innerHTML = `Current Resin (0 - ${RESIN_LIMIT})`;
 
 //Main
 document.querySelector("#resin").focus();

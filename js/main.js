@@ -25,7 +25,9 @@ function calculate(resin, start_time){
     document.querySelector("#current_resin").innerHTML = cur_res;
     document.querySelector("#refill_time").innerHTML =  H_cur + "h " + M_cur + "m " + S_cur + "s";
     document.querySelector("#refill_date").innerHTML = moment(start_time).add(H_start, "hours").add(M_start, "minutes").format("LT");
-    document.title =  cur_res + " Resin | " + H_cur + "h " + M_cur + "m " + " left";
+
+    const time_left_str = (H_cur > 0 ? H_cur + " h " : "") + (H_cur > 0 || M_cur > 0 ? M_cur + " min" : S_cur + " s");
+    document.title =  cur_res + " Resin | " + time_left_str + " left";
 
     let titles = document.getElementsByClassName("title_top");
     for (let i = 0; i < titles.length; i++) {

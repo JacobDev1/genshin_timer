@@ -1,12 +1,23 @@
 const DEBUG = false;
 const RESIN_LIMIT = 200;
-const RECHARGE_INTERVAL = 8;    //minutes
+const RECHARGE_INTERVAL = 8;    // Minutes
 
 // Update HTML
 document.querySelector("#resin").setAttribute("max", RESIN_LIMIT);
 document.querySelector("#basic-addon1").innerHTML = `Current Resin (0 - ${RESIN_LIMIT})`;
 
-//Main
+// Main logic
+function formatTimeRemainingTitle(totalSeconds) {
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = Math.floor(totalSeconds % 60);
+    return [
+        hours > 0 ? `${hours} h` : "",
+        minutes > 0 ? `${minutes} min` : "",
+        hours === 0 && minutes === 0 ? `"${seconds} s"` : "",
+    ].filter(Boolean).join(" ");
+}
+
 document.querySelector("#resin").focus();
 function calculate(resin, start_time){
     const time_diff = parseInt(Math.abs(new Date().getTime() - start_time.getTime()) / 1000);
@@ -27,12 +38,7 @@ function calculate(resin, start_time){
     const refill_date = new Date(start_time.getTime() + (H_start * 60 + M_start) * 60000);
     document.querySelector("#refill_date").innerHTML = refill_date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 
-    const time_left_parts = [
-        H_cur > 0 ? `${H_cur} h` : "",
-        M_cur > 0 ? `${M_cur} min` : "",
-        H_cur === 0 && M_cur === 0 && S_cur > 0 ? `${S_cur} s` : "",
-    ].filter(Boolean);
-    const time_left_str = cur_res === RESIN_LIMIT ? "Full" : `${time_left_parts.join(" ")} left`;
+    const time_left_str = cur_res === RESIN_LIMIT ? "Full" : `${formatTimeRemainingTitle(minutes_to_refill * 60)} left`;
     document.title = `${cur_res} Resin | ${time_left_str}`
 
     let titles = document.getElementsByClassName("title_top");

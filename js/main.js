@@ -23,7 +23,7 @@ function calculate(resin, start_time){
     if(H_start < 0 || M_start < 0 || H_cur < 0 || M_cur < 0 || cur_res > RESIN_LIMIT)   return;
 
     document.querySelector("#current_resin").innerHTML = cur_res;
-    document.querySelector("#refill_time").innerHTML =  H_cur + "h " + M_cur + "m " + S_cur + "s";
+    document.querySelector("#refill_time").innerHTML =  H_cur + " h " + M_cur + " min " + S_cur + " s";
     document.querySelector("#refill_date").innerHTML = moment(start_time).add(H_start, "hours").add(M_start, "minutes").format("LT");
 
     const time_left_parts = [

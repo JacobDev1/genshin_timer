@@ -7,6 +7,13 @@ document.querySelector("#resin").setAttribute("max", RESIN_LIMIT);
 document.querySelector("#basic-addon1").innerHTML = `Current Resin (0 - ${RESIN_LIMIT})`;
 
 // Main logic
+function formatTimeRemainingDisplay(totalSeconds) {
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = Math.floor(totalSeconds % 60);
+    return `${hours} h ${minutes} min ${seconds} s`;
+}
+
 function formatTimeRemainingTitle(totalSeconds) {
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -34,7 +41,7 @@ function calculate(resin, start_time){
     if(H_start < 0 || M_start < 0 || H_cur < 0 || M_cur < 0 || cur_res > RESIN_LIMIT)   return;
 
     document.querySelector("#current_resin").innerHTML = cur_res;
-    document.querySelector("#refill_time").innerHTML = `${H_cur} h ${M_cur} min ${S_cur} s`;
+    document.querySelector("#refill_time").innerHTML = formatTimeRemainingDisplay(H_cur * 3600 + M_cur * 60 + S_cur);
     const refill_date = new Date(start_time.getTime() + (H_start * 60 + M_start) * 60000);
     document.querySelector("#refill_date").innerHTML = refill_date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 

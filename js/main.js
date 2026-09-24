@@ -24,7 +24,8 @@ function calculate(resin, start_time){
 
     document.querySelector("#current_resin").innerHTML = cur_res;
     document.querySelector("#refill_time").innerHTML =  H_cur + " h " + M_cur + " min " + S_cur + " s";
-    document.querySelector("#refill_date").innerHTML = moment(start_time).add(H_start, "hours").add(M_start, "minutes").format("LT");
+    const refill_date = new Date(start_time.getTime() + (H_start * 60 + M_start) * 60000);
+    document.querySelector("#refill_date").innerHTML = refill_date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 
     const time_left_parts = [
         H_cur > 0 ? `${H_cur} h` : "",

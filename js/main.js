@@ -26,8 +26,22 @@ function calculate(resin, start_time){
     document.querySelector("#refill_time").innerHTML =  H_cur + "h " + M_cur + "m " + S_cur + "s";
     document.querySelector("#refill_date").innerHTML = moment(start_time).add(H_start, "hours").add(M_start, "minutes").format("LT");
 
-    const time_left_str = (H_cur > 0 ? H_cur + " h " : "") + (H_cur > 0 || M_cur > 0 ? M_cur + " min" : S_cur + " s");
-    document.title =  cur_res + " Resin | " + time_left_str + " left";
+    let time_left_str = "";
+    if (H_cur > 0) {
+        time_left_str += H_cur + " h ";
+    }
+    if (M_cur > 0) {
+        time_left_str += M_cur + " min ";
+    }
+    if (H_cur === 0 && M_cur === 0 && S_cur > 0) {
+        time_left_str += S_cur + " s ";
+    }
+    if (cur_res === RESIN_LIMIT) {
+        time_left_str = "Full";
+    } else {
+        time_left_str += "left";
+    }
+    document.title =  cur_res + " Resin | " + time_left_str;
 
     let titles = document.getElementsByClassName("title_top");
     for (let i = 0; i < titles.length; i++) {

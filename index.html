@@ -8,52 +8,40 @@
     <meta name="keywords" content="genshin impact, resin, timer, counter, replenish, refill">
 
     <link rel="icon" type="image/png" href="./img/favicon.png"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-    <div class="jumbotron text-center">
+    <header class="hero">
         <h1>Genshin Impact</h1>
         <h2>Resin Timer</h2>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="resin-input-label">Current Resin (0 - 200)</span>
-                    </div>
-                    <input type="number" class="form-control" id="resin" min="0" max="200">
-                    <button class="btn btn-outline-dark" id="resin-button">Calculate</button><br>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="title-top">Current Resin</div>
-                <div class="title-bottom" id="current-resin"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="title-top">Full Refill in</div>
-                <div class="title-bottom" id="refill-time"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="title-top">at</div>
-                <div class="title-bottom" id="refill-date"></div>
-            </div>
-        </div>
-    </div>
+    </header>
 
-    <footer class="page-footer fixed-bottom">
-        <div class="footer-copyright text-center py-3">This website is not affiliated with miHoYo. | 2020 - 2026
+    <main class="container">
+        <div class="input-row">
+            <label class="input-label" id="resin-input-label" for="resin">Current Resin (0 - 200)</label>
+            <input type="number" class="form-control" id="resin" min="0" max="200">
+            <button id="resin-button">Calculate</button>
         </div>
+
+        <section class="stat">
+            <div class="title-top">Current Resin</div>
+            <div class="title-bottom" id="current-resin"></div>
+        </section>
+
+        <section class="stat">
+            <div class="title-top">Full Refill in</div>
+            <div class="title-bottom" id="refill-time"></div>
+        </section>
+
+        <section class="stat">
+            <div class="title-top">at</div>
+            <div class="title-bottom" id="refill-date"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>This website is not affiliated with miHoYo. | 2020 - 2026</p>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>

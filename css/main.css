@@ -14,79 +14,191 @@
     font-display: swap;
 }
 
-body{
-    font-family: 'Open Sans', sans-serif;
-    margin-bottom: 50px;    /*Fixes footer on small screens*/
-    font-weight: 300;
+:root {
+    --color-background: #222;
+    --color-font: #fff;
+    --color-focus-outline: #555;
+    --color-outline: #777;
+    --color-input-background: #444;
+    --color-input-hover: #444;
 }
 
-h1{
-    font-size: 48px;
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 0 60px;
+    font-weight: 300;
+    background-color: var(--color-background);
+    color: var(--color-font);
+}
+
+h1 {
+    font-size: 2.75rem;
     font-weight: 600;
+    margin: 0;
 }
 
 h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin: 0 0 20px;
+}
+
+.hero {
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.input-row {
+    display: flex;
+    align-items: stretch;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.input-label,
+.input-row input,
+.input-row button {
+    color: var(--color-font);
+    background-color: transparent;
+    border: solid 1px var(--color-outline);
+    font-family: inherit;
+    font-size: 1.125rem;
     font-weight: 300;
 }
 
-.title-top{
-    font-weight: 700;
-    font-size: 25px;
-    margin-bottom: -1.5rem;
+.input-row input:focus,
+.input-row button:focus {
+    outline: solid 4px var(--color-focus-outline);
+    border: none;
+}
+
+.input-row label {
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.input-row input {
+    min-width: 0;
+    height: 40px;
+    flex: 1 1 auto;
+    padding: 0 0.75rem;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.input-row button {
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0 1rem;
+}
+
+.input-row button:hover {
+    background-color: var(--color-input-hover);
+}
+
+.stat {
     margin-top: 2rem;
 }
 
-.title-bottom{
-    font-size: 100px;
-    font-weight: 300;
-    letter-spacing: -.15rem;
-    margin-bottom: -1rem;
+.title-top {
+    font-weight: 700;
+    font-size: 1.56rem;
+    margin-bottom: -5px;
+    visibility: hidden;
 }
 
-.title-top{
-    visibility: hidden;
+.title-bottom{
+    font-size: 6.25rem;
+    font-weight: 300;
+    letter-spacing: -0.15rem;
+    margin-bottom: -1rem;
 }
 
 .title-top.is-visible {
     visibility: visible;
 }
 
-.row{
-    text-align: center;
-}
-
-button, button:focus, input{
-    border: solid 1px black;
-}
-
-.col{
-    max-width: 600px;
-    margin: auto;
-}
-
-.jumbotron{
-    padding: 2rem;
-}
-
-.page-footer{
-    background-color: rgb(233, 233, 233);
+footer {
+    font-size: 1rem;
     font-weight: 300;
+    text-align: center;
+    padding: 1rem 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
 }
 
 @media only screen and (max-width: 767px) {
     .title-top{
-        font-size: 20px;
+        font-size: 1.25rem;
     }
+
     .title-bottom{
-        font-size: 80px;
+        font-size: 4.05rem;
     }
 }
 
 @media only screen and (max-width: 480px) {
-    .title-top{
-        font-size: 15px;
+    .input-row {
+        flex-direction: column;
     }
-    .title-bottom{
-        font-size: 60px;
+
+    .input-row label {
+        justify-content: center;
+    }
+
+    .input-row input {
+        text-align: center;
+    }
+
+    .input-row button {
+        padding: 0.3rem 0;
+    }
+
+    .title-top {
+        font-size: 1.25rem;
+    }
+
+    .title-bottom {
+        font-size: 4.05rem;
+    }
+
+    h1 {
+        font-size: 2.375rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    footer {
+        font-size: 0.875rem;
     }
 }

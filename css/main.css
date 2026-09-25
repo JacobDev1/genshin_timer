@@ -38,7 +38,7 @@ h2 {
 
 .title-bottom{
     font-size: 100px;
-    font-weight: light;
+    font-weight: 300;
     letter-spacing: -.15rem;
     margin-bottom: -1rem;
 }
@@ -74,19 +74,19 @@ button, button:focus, input{
 }
 
 @media only screen and (max-width: 767px) {
-    .title_top{
+    .title-top{
         font-size: 20px;
     }
-    .title_bottom{
+    .title-bottom{
         font-size: 80px;
     }
 }
 
 @media only screen and (max-width: 480px) {
-    .title_top{
+    .title-top{
         font-size: 15px;
     }
-    .title_bottom{
+    .title-bottom{
         font-size: 60px;
     }
 }

@@ -4,7 +4,7 @@ const TICK_INTERVAL = 1000;
 
 const elements = {
     resin: document.querySelector("#resin"),
-    addon: document.querySelector("#basic-addon1"),
+    resinInputLabel: document.querySelector("#resin-input-label"),
     currentResin: document.querySelector("#current-resin"),
     refillTime: document.querySelector("#refill-time"),
     refillDate: document.querySelector("#refill-date"),
@@ -14,7 +14,7 @@ const elements = {
 let refreshId = null;
 
 elements.resin.setAttribute("max", RESIN_LIMIT);
-elements.addon.innerHTML = `Current Resin (0 - ${RESIN_LIMIT})`;
+elements.resinInputLabel.innerHTML = `Current Resin (0 - ${RESIN_LIMIT})`;
 
 function formatTimeRemainingDisplay(totalSeconds) {
     const hours = Math.floor(totalSeconds / 3600);

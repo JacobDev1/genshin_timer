@@ -30,12 +30,12 @@ function formatTimeRemainingTitle(totalSeconds) {
     return [
         hours > 0 ? `${hours} h` : "",
         minutes > 0 ? `${minutes} min` : "",
-        hours === 0 && minutes === 0 ? `"${seconds} s"` : "",
+        hours === 0 && minutes === 0 ? `${seconds} s` : "",
     ].filter(Boolean).join(" ");
 }
 
 function computeResinState(startResin, startTime, now = Date.now()) {
-    const elapsedSeconds = Math.floor((now - startTime.getTime()) / 1000);
+    const elapsedSeconds = Math.max(0, Math.floor((now - startTime.getTime()) / 1000));
     const totalRefillSeconds = (RESIN_LIMIT - startResin) * RECHARGE_INTERVAL_SECONDS;
     const remainingSeconds = Math.max(0, totalRefillSeconds - elapsedSeconds);
     const currentResin = Math.min(
@@ -57,8 +57,6 @@ function render(state) {
 
     const timeLeft = state.isFull ? "Full" : `${formatTimeRemainingTitle(state.remainingSeconds)} left`;
     document.title = `${state.currentResin} Resin | ${timeLeft}`;
-
-    elements.titles.forEach((e) => e.classList.add("is-visible"));
 }
 
 function stopCountdown() {
@@ -80,6 +78,7 @@ function startCountdown() {
         if (state.isFull) stopCountdown();
     };
 
+    elements.titles.forEach((e) => e.classList.add("is-visible"));
     refreshId = setInterval(tick, TICK_INTERVAL);
     tick();
     elements.resin.value = "";

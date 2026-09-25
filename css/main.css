@@ -29,22 +29,26 @@ h2 {
     font-weight: 300;
 }
 
-.title_top{
+.title-top{
     font-weight: 700;
     font-size: 25px;
     margin-bottom: -1.5rem;
     margin-top: 2rem;
 }
 
-.title_bottom{
+.title-bottom{
     font-size: 100px;
     font-weight: light;
     letter-spacing: -.15rem;
     margin-bottom: -1rem;
 }
 
-.title_top{
+.title-top{
     visibility: hidden;
+}
+
+.title-top.is-visible {
+    visibility: visible;
 }
 
 .row{

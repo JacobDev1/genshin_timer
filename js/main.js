@@ -16,17 +16,21 @@ let refreshId = null;
 elements.resin.setAttribute("max", RESIN_LIMIT);
 elements.resinInputLabel.innerHTML = `Current Resin (0 - ${RESIN_LIMIT})`;
 
+function splitTime(totalSeconds) {
+    return {
+        hours: Math.floor(totalSeconds / 3600),
+        minutes: Math.floor((totalSeconds % 3600) / 60),
+        seconds: Math.floor(totalSeconds % 60),
+    };
+}
+
 function formatTimeRemainingDisplay(totalSeconds) {
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = Math.floor(totalSeconds % 60);
+    const { hours, minutes, seconds } = splitTime(totalSeconds);
     return `${hours} h ${minutes} min ${seconds} s`;
 }
 
 function formatTimeRemainingTitle(totalSeconds) {
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = Math.floor(totalSeconds % 60);
+    const { hours, minutes, seconds } = splitTime(totalSeconds);
     return [
         hours > 0 ? `${hours} h` : "",
         minutes > 0 ? `${minutes} min` : "",

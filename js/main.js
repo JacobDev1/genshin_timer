@@ -80,8 +80,8 @@ function startCountdown() {
         if (state.isFull) stopCountdown();
     };
 
-    tick();
     refreshId = setInterval(tick, TICK_INTERVAL);
+    tick();
     elements.resin.value = "";
 }
 

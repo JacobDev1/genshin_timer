@@ -26,15 +26,15 @@ function splitTime(totalSeconds) {
 
 function formatTimeRemainingDisplay(totalSeconds) {
     const { hours, minutes, seconds } = splitTime(totalSeconds);
-    return `${hours} h ${minutes} min ${seconds} s`;
+    return `${hours}h ${minutes}m ${seconds}s`;
 }
 
 function formatTimeRemainingTitle(totalSeconds) {
     const { hours, minutes, seconds } = splitTime(totalSeconds);
     return [
-        hours > 0 ? `${hours} h` : "",
-        minutes > 0 ? `${minutes} min` : "",
-        hours === 0 && minutes === 0 ? `${seconds} s` : "",
+        hours > 0 ? `${hours}h` : "",
+        minutes > 0 ? `${minutes}m` : "",
+        hours === 0 && minutes === 0 ? `${seconds}s` : "",
     ].filter(Boolean).join(" ");
 }
 

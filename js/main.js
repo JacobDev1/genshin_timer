@@ -1,5 +1,5 @@
 const RESIN_LIMIT = 200;
-const RECHARGE_INTERVAL = 8;    // Minutes
+const RECHARGE_INTERVAL_SECONDS = 8 * 60;
 const TICK_INTERVAL = 1000;
 
 const elements = {
@@ -36,11 +36,11 @@ function formatTimeRemainingTitle(totalSeconds) {
 
 function computeResinState(startResin, startTime, now = Date.now()) {
     const elapsedSeconds = Math.floor((now - startTime.getTime()) / 1000);
-    const totalRefillSeconds = (RESIN_LIMIT - startResin) * RECHARGE_INTERVAL * 60;
+    const totalRefillSeconds = (RESIN_LIMIT - startResin) * RECHARGE_INTERVAL_SECONDS;
     const remainingSeconds = Math.max(0, totalRefillSeconds - elapsedSeconds);
     const currentResin = Math.min(
         RESIN_LIMIT,
-        Math.floor(elapsedSeconds / (RECHARGE_INTERVAL * 60)) + startResin
+        Math.floor(elapsedSeconds / (RECHARGE_INTERVAL_SECONDS)) + startResin
     );
     return {
         currentResin,

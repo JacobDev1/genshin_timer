@@ -34,6 +34,20 @@ function formatTimeRemainingTitle(totalSeconds) {
     ].filter(Boolean).join(" ");
 }
 
+function formatRefillDate(date) {
+    const now = new Date();
+    const isSameDay =
+        date.getFullYear() === now.getFullYear() &&
+        date.getMonth() === now.getMonth() &&
+        date.getDate() === now.getDate();
+    return date.toLocaleString(
+        [],
+        isSameDay
+            ? { hour: "numeric", minute: "2-digit" }
+            : { weekday: "short", hour: "numeric", minute: "2-digit" },
+    );
+}
+
 function computeResinState(startResin, startTime, now = Date.now()) {
     const elapsedSeconds = Math.max(0, Math.floor((now - startTime.getTime()) / 1000));
     const totalRefillSeconds = (RESIN_LIMIT - startResin) * RECHARGE_INTERVAL_SECONDS;
@@ -53,7 +67,7 @@ function computeResinState(startResin, startTime, now = Date.now()) {
 function render(state) {
     elements.currentResin.textContent = state.currentResin;
     elements.refillTime.textContent = formatTimeRemainingDisplay(state.remainingSeconds);
-    elements.refillDate.textContent = state.refillDate.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    elements.refillDate.textContent = formatRefillDate(state.refillDate);
 
     const timeLeft = state.isFull ? "Full" : `${formatTimeRemainingTitle(state.remainingSeconds)} left`;
     document.title = `${state.currentResin} Resin | ${timeLeft}`;

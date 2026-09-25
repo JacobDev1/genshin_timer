@@ -45,7 +45,7 @@ function computeResinState(startResin, startTime, now = Date.now()) {
     return {
         currentResin,
         remainingSeconds,
-        isFull: currentResin === RESIN_LIMIT,
+        isFull: currentResin >= RESIN_LIMIT,
         refillDate: new Date(startTime.getTime() + totalRefillSeconds * 1000),
     };
 }

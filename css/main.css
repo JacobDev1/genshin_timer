@@ -62,8 +62,11 @@ a {
     min-height: 100vh;
     min-height: 100dvh;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 2rem 1rem 0;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
 }
 
 .input-row {
@@ -71,7 +74,6 @@ a {
     align-items: stretch;
     gap: 1rem;
     justify-content: center;
-    margin: 1.5rem auto;
     max-width: 600px;
 }
 

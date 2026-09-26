@@ -1,7 +1,13 @@
-## Genshin Impact Resin Timer
-Enter how much Resin you have and get the refill time.
+# Genshin Impact Resin Timer
+
+Calculates and tracks resin refill time.
 
 ![banner](img/github_banner.png)
 
-### Notice
-Favicon was made from the scratch to avoid any copyright issues.
+## Changing Resin Limit
+
+Resin limit changed? Submit an issue to let me know.
+
+## Copyright Notice
+
+The favicon was made from the scratch to avoid any copyright issues.

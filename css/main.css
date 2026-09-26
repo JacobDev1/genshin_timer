@@ -47,6 +47,10 @@ h2 {
     margin: 0 0 20px;
 }
 
+a {
+    color: var(--color-font);
+}
+
 .hero {
     padding: 1.5rem 1rem;
     text-align: center;

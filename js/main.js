@@ -7,6 +7,7 @@ const statusCurrentResin = document.querySelector("#current-resin");
 const statusRefillCountdown = document.querySelector("#refill-time");
 const statusRefillDate = document.querySelector("#refill-date");
 const statusTitles = document.querySelectorAll(".title-top");
+const toastContainer = document.querySelector("#toast-container");
 let refreshId = null;
 
 function getStructuredTime(totalSeconds) {
@@ -67,6 +68,19 @@ function render(resinState) {
     document.title = `${resinState.currentResin} Resin | ${timeLeftTitle}`;
 }
 
+function showToast(message, duration = 2500) {
+    const toast = document.createElement("div");
+    toast.textContent = message;
+    toast.className = "toast";
+
+    toastContainer.prepend(toast);
+
+    setTimeout(() => {
+        toast.classList.add("exiting");
+        toast.addEventListener("animationend", () => toast.remove());
+    }, duration);
+}
+
 function stopCountdown() {
     clearInterval(refreshId);
     refreshId = null;
@@ -76,13 +90,16 @@ function startCountdown() {
     const resinStr = resinInput.value;
     const resin = Number(resinStr);
     resinInput.value = "";      // Clear input.
+
     if (
         resinStr === "" ||      // Prevents empty input from setting resin to 0
         !Number.isInteger(resin) ||
         resin < 0 ||
         resin > RESIN_LIMIT
-    )
+    ){
+        showToast(`Wrong value. Enter a number between 0 and ${RESIN_LIMIT}.`);
         return;
+    }
 
     const startDate = new Date();
     const intervalFunc = () => {

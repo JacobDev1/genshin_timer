@@ -73,9 +73,11 @@ function stopCountdown() {
 }
 
 function startCountdown() {
-    const resin = Number(resinInput.value);
+    const resinStr = resinInput.value;
+    const resin = Number(resinStr);
+    resinInput.value = "";      // Clear input.
     if (
-        resinInput.value === "" ||      // Prevents empty input from setting resin to 0
+        resinStr === "" ||      // Prevents empty input from setting resin to 0
         !Number.isInteger(resin) ||
         resin < 0 ||
         resin > RESIN_LIMIT
@@ -94,7 +96,6 @@ function startCountdown() {
     stopCountdown();
     intervalFunc();
     refreshId = setInterval(intervalFunc, 1000);
-    resinInput.value = "";
 }
 
 function init() {
